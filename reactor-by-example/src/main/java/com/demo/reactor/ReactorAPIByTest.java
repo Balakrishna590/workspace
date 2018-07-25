@@ -1,10 +1,13 @@
 package com.demo.reactor;
 
 import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.Test;
 
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 public class ReactorAPIByTest {
 
@@ -36,5 +39,13 @@ public class ReactorAPIByTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@Test
+	public void testFlux2() {
+		List<String> words=Arrays.asList("One","Two","Three","Four","Five");
+		Flux<String> data=Flux.fromIterable(words);
+		data.
+		flatMap(s->Mono.just(s+"hi")).log().subscribe(System.out::println);
 	}
 }
